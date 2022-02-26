@@ -1,0 +1,226 @@
+\hypertarget{_w_s_8cpp}{}\doxysection{Référence du fichier src/\+WS.cpp}
+\label{_w_s_8cpp}\index{src/WS.cpp@{src/WS.cpp}}
+{\ttfamily \#include \char`\"{}WS.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}AP.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_a18881b7356903b39af7749c2e0dd3b8f}{WS\+\_\+local\+\_\+\+IP}} (192, 168, 1, 29)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} Local IP. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_afdf553d25c72b7c1ee9f68e1a438fbd1}{WS\+\_\+gateway}} (192, 168, 1, 12)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} Gateway IP. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_a291dbaac91403efeb7066961d240b63a}{WS\+\_\+subnet}} (255, 255, 255, 0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} Subnet IP. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_a2c97a46e09452330ec6714e089441f6b}{AP\+\_\+local\+\_\+\+IP}} (192, 168, 4, 128)
+\begin{DoxyCompactList}\small\item\em AP Local IP. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_ae2334dba64bc273d2acb3e32319f4e6c}{AP\+\_\+gateway}} (192, 168, 4, 9)
+\begin{DoxyCompactList}\small\item\em AP Gateway IP. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_a6d7f04056241af572703152bb17562ce}{AP\+\_\+subnet}} (255, 255, 255, 0)
+\begin{DoxyCompactList}\small\item\em AP Subnet IP. \end{DoxyCompactList}\item 
+ESP8266\+Web\+Server \mbox{\hyperlink{_w_s_8cpp_a58141c4f251beaa1fee89b632d87152f}{server}} (80)
+\begin{DoxyCompactList}\small\item\em Web Server Initialisation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s_8cpp_a8427468f39342a1990703e9f5ce7fd29}{handle\+Root}} ()
+\begin{DoxyCompactList}\small\item\em Handle the generation of the root page. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_w_s_8cpp_acb21d8f817501e9b8cc52fa55ea75c09}{handle\+Get\+Temp}} ()
+\begin{DoxyCompactList}\small\item\em Handle the generation of the temperature display page. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_w_s_8cpp_ad3e627dcc822720da67941bf00839806}{get\+Page}} ()
+\begin{DoxyCompactList}\small\item\em Get the Page object. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{_w_s_8cpp_a22d8d95f2e668cf521058d53fbe2ebdd}{get\+Page\+Temp}} ()
+\begin{DoxyCompactList}\small\item\em Get the Page Temp object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \mbox{\hyperlink{_w_s_8cpp_aa29566879e73d589c73727eef7cb96a6}{WS\+\_\+ssid}} = \char`\"{}robotique\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} SSID. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_w_s_8cpp_af8052f0269db3a267ca31218bf019c5c}{WS\+\_\+password}} = \char`\"{}robotique\+S3\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} Password. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_ae64761255f058819a285262299436514}{WS\+\_\+my\+IP}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_w_s}{WS}} IP selected. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_w_s_8cpp_a012a36a04aac1c0cbd0f3cb542b4349f}{AP\+\_\+ssid}} = \char`\"{}IIo\+T\+\_\+\+Temp\+\_\+\+Buddy\char`\"{}
+\begin{DoxyCompactList}\small\item\em AP SSID. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_w_s_8cpp_a67c79e7bc13e263a688d31d079cc377d}{AP\+\_\+password}} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em AP Password. \end{DoxyCompactList}\item 
+IPAddress \mbox{\hyperlink{_w_s_8cpp_ad11c280ff6bc0cf380b4bc5eb7f28c05}{AP\+\_\+my\+IP}}
+\begin{DoxyCompactList}\small\item\em AP IP selected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{_w_s_8cpp_ae2334dba64bc273d2acb3e32319f4e6c}\label{_w_s_8cpp_ae2334dba64bc273d2acb3e32319f4e6c}} 
+\index{WS.cpp@{WS.cpp}!AP\_gateway@{AP\_gateway}}
+\index{AP\_gateway@{AP\_gateway}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_gateway()}{AP\_gateway()}}
+{\footnotesize\ttfamily IPAddress AP\+\_\+gateway (\begin{DoxyParamCaption}\item[{192}]{,  }\item[{168}]{,  }\item[{4}]{,  }\item[{9}]{ }\end{DoxyParamCaption})}
+
+
+
+AP Gateway IP. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a2c97a46e09452330ec6714e089441f6b}\label{_w_s_8cpp_a2c97a46e09452330ec6714e089441f6b}} 
+\index{WS.cpp@{WS.cpp}!AP\_local\_IP@{AP\_local\_IP}}
+\index{AP\_local\_IP@{AP\_local\_IP}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_local\_IP()}{AP\_local\_IP()}}
+{\footnotesize\ttfamily IPAddress AP\+\_\+local\+\_\+\+IP (\begin{DoxyParamCaption}\item[{192}]{,  }\item[{168}]{,  }\item[{4}]{,  }\item[{128}]{ }\end{DoxyParamCaption})}
+
+
+
+AP Local IP. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a6d7f04056241af572703152bb17562ce}\label{_w_s_8cpp_a6d7f04056241af572703152bb17562ce}} 
+\index{WS.cpp@{WS.cpp}!AP\_subnet@{AP\_subnet}}
+\index{AP\_subnet@{AP\_subnet}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_subnet()}{AP\_subnet()}}
+{\footnotesize\ttfamily IPAddress AP\+\_\+subnet (\begin{DoxyParamCaption}\item[{255}]{,  }\item[{255}]{,  }\item[{255}]{,  }\item[{0}]{ }\end{DoxyParamCaption})}
+
+
+
+AP Subnet IP. 
+
+\mbox{\Hypertarget{_w_s_8cpp_ad3e627dcc822720da67941bf00839806}\label{_w_s_8cpp_ad3e627dcc822720da67941bf00839806}} 
+\index{WS.cpp@{WS.cpp}!getPage@{getPage}}
+\index{getPage@{getPage}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{getPage()}{getPage()}}
+{\footnotesize\ttfamily String get\+Page (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the Page object. 
+
+\begin{DoxyReturn}{Renvoie}
+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_w_s_8cpp_a22d8d95f2e668cf521058d53fbe2ebdd}\label{_w_s_8cpp_a22d8d95f2e668cf521058d53fbe2ebdd}} 
+\index{WS.cpp@{WS.cpp}!getPageTemp@{getPageTemp}}
+\index{getPageTemp@{getPageTemp}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{getPageTemp()}{getPageTemp()}}
+{\footnotesize\ttfamily String get\+Page\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the Page Temp object. 
+
+\begin{DoxyReturn}{Renvoie}
+String 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_w_s_8cpp_acb21d8f817501e9b8cc52fa55ea75c09}\label{_w_s_8cpp_acb21d8f817501e9b8cc52fa55ea75c09}} 
+\index{WS.cpp@{WS.cpp}!handleGetTemp@{handleGetTemp}}
+\index{handleGetTemp@{handleGetTemp}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{handleGetTemp()}{handleGetTemp()}}
+{\footnotesize\ttfamily void handle\+Get\+Temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handle the generation of the temperature display page. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a8427468f39342a1990703e9f5ce7fd29}\label{_w_s_8cpp_a8427468f39342a1990703e9f5ce7fd29}} 
+\index{WS.cpp@{WS.cpp}!handleRoot@{handleRoot}}
+\index{handleRoot@{handleRoot}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{handleRoot()}{handleRoot()}}
+{\footnotesize\ttfamily void handle\+Root (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Handle the generation of the root page. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a58141c4f251beaa1fee89b632d87152f}\label{_w_s_8cpp_a58141c4f251beaa1fee89b632d87152f}} 
+\index{WS.cpp@{WS.cpp}!server@{server}}
+\index{server@{server}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{server()}{server()}}
+{\footnotesize\ttfamily ESP8266\+Web\+Server server (\begin{DoxyParamCaption}\item[{80}]{ }\end{DoxyParamCaption})}
+
+
+
+Web Server Initialisation. 
+
+\mbox{\Hypertarget{_w_s_8cpp_afdf553d25c72b7c1ee9f68e1a438fbd1}\label{_w_s_8cpp_afdf553d25c72b7c1ee9f68e1a438fbd1}} 
+\index{WS.cpp@{WS.cpp}!WS\_gateway@{WS\_gateway}}
+\index{WS\_gateway@{WS\_gateway}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_gateway()}{WS\_gateway()}}
+{\footnotesize\ttfamily IPAddress WS\+\_\+gateway (\begin{DoxyParamCaption}\item[{192}]{,  }\item[{168}]{,  }\item[{1}]{,  }\item[{12}]{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} Gateway IP. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a18881b7356903b39af7749c2e0dd3b8f}\label{_w_s_8cpp_a18881b7356903b39af7749c2e0dd3b8f}} 
+\index{WS.cpp@{WS.cpp}!WS\_local\_IP@{WS\_local\_IP}}
+\index{WS\_local\_IP@{WS\_local\_IP}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_local\_IP()}{WS\_local\_IP()}}
+{\footnotesize\ttfamily IPAddress WS\+\_\+local\+\_\+\+IP (\begin{DoxyParamCaption}\item[{192}]{,  }\item[{168}]{,  }\item[{1}]{,  }\item[{29}]{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} Local IP. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a291dbaac91403efeb7066961d240b63a}\label{_w_s_8cpp_a291dbaac91403efeb7066961d240b63a}} 
+\index{WS.cpp@{WS.cpp}!WS\_subnet@{WS\_subnet}}
+\index{WS\_subnet@{WS\_subnet}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_subnet()}{WS\_subnet()}}
+{\footnotesize\ttfamily IPAddress WS\+\_\+subnet (\begin{DoxyParamCaption}\item[{255}]{,  }\item[{255}]{,  }\item[{255}]{,  }\item[{0}]{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} Subnet IP. 
+
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{_w_s_8cpp_ad11c280ff6bc0cf380b4bc5eb7f28c05}\label{_w_s_8cpp_ad11c280ff6bc0cf380b4bc5eb7f28c05}} 
+\index{WS.cpp@{WS.cpp}!AP\_myIP@{AP\_myIP}}
+\index{AP\_myIP@{AP\_myIP}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_myIP}{AP\_myIP}}
+{\footnotesize\ttfamily IPAddress AP\+\_\+my\+IP}
+
+
+
+AP IP selected. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a67c79e7bc13e263a688d31d079cc377d}\label{_w_s_8cpp_a67c79e7bc13e263a688d31d079cc377d}} 
+\index{WS.cpp@{WS.cpp}!AP\_password@{AP\_password}}
+\index{AP\_password@{AP\_password}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_password}{AP\_password}}
+{\footnotesize\ttfamily const char$\ast$ AP\+\_\+password = \char`\"{}\char`\"{}}
+
+
+
+AP Password. 
+
+\mbox{\Hypertarget{_w_s_8cpp_a012a36a04aac1c0cbd0f3cb542b4349f}\label{_w_s_8cpp_a012a36a04aac1c0cbd0f3cb542b4349f}} 
+\index{WS.cpp@{WS.cpp}!AP\_ssid@{AP\_ssid}}
+\index{AP\_ssid@{AP\_ssid}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{AP\_ssid}{AP\_ssid}}
+{\footnotesize\ttfamily const char$\ast$ AP\+\_\+ssid = \char`\"{}IIo\+T\+\_\+\+Temp\+\_\+\+Buddy\char`\"{}}
+
+
+
+AP SSID. 
+
+\mbox{\Hypertarget{_w_s_8cpp_ae64761255f058819a285262299436514}\label{_w_s_8cpp_ae64761255f058819a285262299436514}} 
+\index{WS.cpp@{WS.cpp}!WS\_myIP@{WS\_myIP}}
+\index{WS\_myIP@{WS\_myIP}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_myIP}{WS\_myIP}}
+{\footnotesize\ttfamily IPAddress WS\+\_\+my\+IP}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} IP selected. 
+
+\mbox{\Hypertarget{_w_s_8cpp_af8052f0269db3a267ca31218bf019c5c}\label{_w_s_8cpp_af8052f0269db3a267ca31218bf019c5c}} 
+\index{WS.cpp@{WS.cpp}!WS\_password@{WS\_password}}
+\index{WS\_password@{WS\_password}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_password}{WS\_password}}
+{\footnotesize\ttfamily const char$\ast$ WS\+\_\+password = \char`\"{}robotique\+S3\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} Password. 
+
+\mbox{\Hypertarget{_w_s_8cpp_aa29566879e73d589c73727eef7cb96a6}\label{_w_s_8cpp_aa29566879e73d589c73727eef7cb96a6}} 
+\index{WS.cpp@{WS.cpp}!WS\_ssid@{WS\_ssid}}
+\index{WS\_ssid@{WS\_ssid}!WS.cpp@{WS.cpp}}
+\doxysubsubsection{\texorpdfstring{WS\_ssid}{WS\_ssid}}
+{\footnotesize\ttfamily const char$\ast$ WS\+\_\+ssid = \char`\"{}robotique\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_w_s}{WS}} SSID. 
+

@@ -1,0 +1,216 @@
+\hypertarget{_publisher_8cpp}{}\doxysection{Référence du fichier src/\+Publisher.cpp}
+\label{_publisher_8cpp}\index{src/Publisher.cpp@{src/Publisher.cpp}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$WEMOS\+\_\+\+SHT3\+X.\+h$>$}\newline
+{\ttfamily \#include $<$ESP8266\+Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include $<$Pub\+Sub\+Client.\+h$>$}\newline
+{\ttfamily \#include $<$WS.\+h$>$}\newline
+{\ttfamily \#include $<$MQTT.\+h$>$}\newline
+{\ttfamily \#include $<$GPIO.\+h$>$}\newline
+{\ttfamily \#include $<$AP.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_publisher_8cpp_acf917f1073a0652e944d1ea28a8f7c61}{trigger\+Time}}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_publisher_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Setup for the ESP8266. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_publisher_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Loop for the ESP8266. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_s_h_t3_x}{SHT3X}} \mbox{\hyperlink{_publisher_8cpp_aca0d9193f20be30df20b67cd55cec077}{sht30}} (0x45)
+\begin{DoxyCompactList}\small\item\em Init of SHT30 Sensor for temp \& hydr. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\+\_\+server}} = \char`\"{}192.\+168.\+1.\+2\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server Adress. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_ae4e3b69a7b450c3747a67ad5995f3c84}{mqtt\+\_\+topic}} = \char`\"{}Temp\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Topic for Temperature. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_afe7a00d4a7e8397f19dd31b3569cd73f}{mqtt\+\_\+topic2}} = \char`\"{}Humi\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Topic for Humidity. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}{mqtt\+\_\+username}} = \char`\"{}usr9\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Username. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}{mqtt\+\_\+password}} = \char`\"{}usr9\char`\"{}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Password. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{_publisher_8cpp_a8f49f435adc17c7e890b923379247887}{client\+ID}} = \char`\"{}ESP8266\+\_\+\+Puberty\char`\"{}
+\begin{DoxyCompactList}\small\item\em The client id identifies the ESP8266 device. Think of it a bit like a hostname (Or just a name, like Greg). \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{_publisher_8cpp_abd72ba0503911f59fafa4bb33a845447}{last}} = millis()
+\begin{DoxyCompactList}\small\item\em Timer of the last timer registration. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{_publisher_8cpp_a398e545edbb7126eb4c219453a8ce64d}{now}} = millis()
+\begin{DoxyCompactList}\small\item\em Timer of current time. \end{DoxyCompactList}\item 
+Wi\+Fi\+Client \mbox{\hyperlink{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}{wifi\+Client}}
+\begin{DoxyCompactList}\small\item\em Initialise the Wi\+Fi and \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Client objects. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}} (\mbox{\hyperlink{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\+\_\+server}}, 1883, \mbox{\hyperlink{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}{wifi\+Client}})
+\begin{DoxyCompactList}\small\item\em Initialisation of 1883 is the listener port for the Broker. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_w_s}{WS}} \mbox{\hyperlink{_publisher_8cpp_ae58a047e705fb9d12b8704bc53779b60}{ws}}
+\begin{DoxyCompactList}\small\item\em Initialisation of Wifi Client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} \mbox{\hyperlink{_publisher_8cpp_a1b7eb9feab18e7c95a366496863b44cd}{mqtt}}
+\begin{DoxyCompactList}\small\item\em Initialisation of \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des macros}
+\mbox{\Hypertarget{_publisher_8cpp_acf917f1073a0652e944d1ea28a8f7c61}\label{_publisher_8cpp_acf917f1073a0652e944d1ea28a8f7c61}} 
+\index{Publisher.cpp@{Publisher.cpp}!triggerTime@{triggerTime}}
+\index{triggerTime@{triggerTime}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{triggerTime}{triggerTime}}
+{\footnotesize\ttfamily \#define trigger\+Time~2}
+
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{_publisher_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{_publisher_8cpp_afe461d27b9c48d5921c00d521181f12f}} 
+\index{Publisher.cpp@{Publisher.cpp}!loop@{loop}}
+\index{loop@{loop}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loop for the ESP8266. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{_publisher_8cpp_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{Publisher.cpp@{Publisher.cpp}!setup@{setup}}
+\index{setup@{setup}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup for the ESP8266. 
+
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}\label{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}} 
+\index{Publisher.cpp@{Publisher.cpp}!client@{client}}
+\index{client@{client}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{client}{client}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} client(\mbox{\hyperlink{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\+\_\+server}}, 1883, \mbox{\hyperlink{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}{wifi\+Client}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}{mqtt\+\_\+server}}}]{,  }\item[{1883}]{,  }\item[{\mbox{\hyperlink{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}{wifi\+Client}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialisation of 1883 is the listener port for the Broker. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a8f49f435adc17c7e890b923379247887}\label{_publisher_8cpp_a8f49f435adc17c7e890b923379247887}} 
+\index{Publisher.cpp@{Publisher.cpp}!clientID@{clientID}}
+\index{clientID@{clientID}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{clientID}{clientID}}
+{\footnotesize\ttfamily const char$\ast$ client\+ID = \char`\"{}ESP8266\+\_\+\+Puberty\char`\"{}}
+
+
+
+The client id identifies the ESP8266 device. Think of it a bit like a hostname (Or just a name, like Greg). 
+
+\mbox{\Hypertarget{_publisher_8cpp_abd72ba0503911f59fafa4bb33a845447}\label{_publisher_8cpp_abd72ba0503911f59fafa4bb33a845447}} 
+\index{Publisher.cpp@{Publisher.cpp}!last@{last}}
+\index{last@{last}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{last}{last}}
+{\footnotesize\ttfamily unsigned long last = millis()}
+
+
+
+Timer of the last timer registration. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a1b7eb9feab18e7c95a366496863b44cd}\label{_publisher_8cpp_a1b7eb9feab18e7c95a366496863b44cd}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt@{mqtt}}
+\index{mqtt@{mqtt}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt}{mqtt}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_m_q_t_t}{MQTT}} mqtt}
+
+
+
+Initialisation of \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}\label{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt\_password@{mqtt\_password}}
+\index{mqtt\_password@{mqtt\_password}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt\_password}{mqtt\_password}}
+{\footnotesize\ttfamily const char$\ast$ mqtt\+\_\+password = \char`\"{}usr9\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} Password. 
+
+\mbox{\Hypertarget{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}\label{_publisher_8cpp_ae62fa8557ef4586408dcbe2f1a09e839}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt\_server@{mqtt\_server}}
+\index{mqtt\_server@{mqtt\_server}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt\_server}{mqtt\_server}}
+{\footnotesize\ttfamily const char$\ast$ mqtt\+\_\+server = \char`\"{}192.\+168.\+1.\+2\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server Adress. 
+
+\mbox{\Hypertarget{_publisher_8cpp_ae4e3b69a7b450c3747a67ad5995f3c84}\label{_publisher_8cpp_ae4e3b69a7b450c3747a67ad5995f3c84}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt\_topic@{mqtt\_topic}}
+\index{mqtt\_topic@{mqtt\_topic}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt\_topic}{mqtt\_topic}}
+{\footnotesize\ttfamily const char$\ast$ mqtt\+\_\+topic = \char`\"{}Temp\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} Topic for Temperature. 
+
+\mbox{\Hypertarget{_publisher_8cpp_afe7a00d4a7e8397f19dd31b3569cd73f}\label{_publisher_8cpp_afe7a00d4a7e8397f19dd31b3569cd73f}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt\_topic2@{mqtt\_topic2}}
+\index{mqtt\_topic2@{mqtt\_topic2}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt\_topic2}{mqtt\_topic2}}
+{\footnotesize\ttfamily const char$\ast$ mqtt\+\_\+topic2 = \char`\"{}Humi\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} Topic for Humidity. 
+
+\mbox{\Hypertarget{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}\label{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}} 
+\index{Publisher.cpp@{Publisher.cpp}!mqtt\_username@{mqtt\_username}}
+\index{mqtt\_username@{mqtt\_username}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{mqtt\_username}{mqtt\_username}}
+{\footnotesize\ttfamily const char$\ast$ mqtt\+\_\+username = \char`\"{}usr9\char`\"{}}
+
+
+
+\mbox{\hyperlink{class_m_q_t_t}{MQTT}} Username. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a398e545edbb7126eb4c219453a8ce64d}\label{_publisher_8cpp_a398e545edbb7126eb4c219453a8ce64d}} 
+\index{Publisher.cpp@{Publisher.cpp}!now@{now}}
+\index{now@{now}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{now}{now}}
+{\footnotesize\ttfamily unsigned long now = millis()}
+
+
+
+Timer of current time. 
+
+\mbox{\Hypertarget{_publisher_8cpp_aca0d9193f20be30df20b67cd55cec077}\label{_publisher_8cpp_aca0d9193f20be30df20b67cd55cec077}} 
+\index{Publisher.cpp@{Publisher.cpp}!sht30@{sht30}}
+\index{sht30@{sht30}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{sht30}{sht30}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_s_h_t3_x}{SHT3X}} sht30(0x45) (\begin{DoxyParamCaption}\item[{0x45}]{ }\end{DoxyParamCaption})}
+
+
+
+Init of SHT30 Sensor for temp \& hydr. 
+
+\mbox{\Hypertarget{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}\label{_publisher_8cpp_a64f7c60366b0a82c42d7a1dbf4e9505a}} 
+\index{Publisher.cpp@{Publisher.cpp}!wifiClient@{wifiClient}}
+\index{wifiClient@{wifiClient}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{wifiClient}{wifiClient}}
+{\footnotesize\ttfamily Wi\+Fi\+Client wifi\+Client}
+
+
+
+Initialise the Wi\+Fi and \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Client objects. 
+
+\mbox{\Hypertarget{_publisher_8cpp_ae58a047e705fb9d12b8704bc53779b60}\label{_publisher_8cpp_ae58a047e705fb9d12b8704bc53779b60}} 
+\index{Publisher.cpp@{Publisher.cpp}!ws@{ws}}
+\index{ws@{ws}!Publisher.cpp@{Publisher.cpp}}
+\doxysubsubsection{\texorpdfstring{ws}{ws}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_w_s}{WS}} ws}
+
+
+
+Initialisation of Wifi Client. 
+

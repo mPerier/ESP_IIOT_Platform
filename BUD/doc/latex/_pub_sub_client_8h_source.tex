@@ -1,0 +1,179 @@
+\hypertarget{_pub_sub_client_8h_source}{}\doxysection{Pub\+Sub\+Client.\+h}
+\label{_pub_sub_client_8h_source}\index{include/PubSubClient.h@{include/PubSubClient.h}}
+\mbox{\hyperlink{_pub_sub_client_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ PubSubClient.h -\/ A simple client for MQTT.}}
+\DoxyCodeLine{3 \textcolor{comment}{  Nick O'Leary}}
+\DoxyCodeLine{4 \textcolor{comment}{  http://knolleary.net}}
+\DoxyCodeLine{5 \textcolor{comment}{*/}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#ifndef PubSubClient\_h}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define PubSubClient\_h}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}IPAddress.h"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Client.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Stream.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define MQTT\_VERSION\_3\_1      3}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define MQTT\_VERSION\_3\_1\_1    4}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// MQTT\_VERSION : Pick the version}}
+\DoxyCodeLine{19 \textcolor{comment}{//\#define MQTT\_VERSION MQTT\_VERSION\_3\_1}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifndef MQTT\_VERSION}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define MQTT\_VERSION MQTT\_VERSION\_3\_1\_1}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{// MQTT\_MAX\_PACKET\_SIZE : Maximum packet size}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#ifndef MQTT\_MAX\_PACKET\_SIZE}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define MQTT\_MAX\_PACKET\_SIZE 128}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{comment}{// MQTT\_KEEPALIVE : keepAlive interval in Seconds}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#ifndef MQTT\_KEEPALIVE}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define MQTT\_KEEPALIVE 15}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 \textcolor{comment}{// MQTT\_SOCKET\_TIMEOUT: socket timeout interval in Seconds}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#ifndef MQTT\_SOCKET\_TIMEOUT}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define MQTT\_SOCKET\_TIMEOUT 15}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{comment}{// MQTT\_MAX\_TRANSFER\_SIZE : limit how much data is passed to the network client}}
+\DoxyCodeLine{40 \textcolor{comment}{//  in each write call. Needed for the Arduino Wifi Shield. Leave undefined to}}
+\DoxyCodeLine{41 \textcolor{comment}{//  pass the entire MQTT packet in each write call.}}
+\DoxyCodeLine{42 \textcolor{comment}{//\#define MQTT\_MAX\_TRANSFER\_SIZE 80}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44 \textcolor{comment}{// Possible values for client.state()}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define MQTT\_CONNECTION\_TIMEOUT     -\/4}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define MQTT\_CONNECTION\_LOST        -\/3}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_FAILED         -\/2}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define MQTT\_DISCONNECTED           -\/1}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define MQTT\_CONNECTED               0}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_BAD\_PROTOCOL    1}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_BAD\_CLIENT\_ID   2}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_UNAVAILABLE     3}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_BAD\_CREDENTIALS 4}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define MQTT\_CONNECT\_UNAUTHORIZED    5}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define MQTTCONNECT     1 << 4  }\textcolor{comment}{// Client request to connect to Server}}
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define MQTTCONNACK     2 << 4  }\textcolor{comment}{// Connect Acknowledgment}}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define MQTTPUBLISH     3 << 4  }\textcolor{comment}{// Publish message}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define MQTTPUBACK      4 << 4  }\textcolor{comment}{// Publish Acknowledgment}}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define MQTTPUBREC      5 << 4  }\textcolor{comment}{// Publish Received (assured delivery part 1)}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define MQTTPUBREL      6 << 4  }\textcolor{comment}{// Publish Release (assured delivery part 2)}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define MQTTPUBCOMP     7 << 4  }\textcolor{comment}{// Publish Complete (assured delivery part 3)}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define MQTTSUBSCRIBE   8 << 4  }\textcolor{comment}{// Client Subscribe request}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define MQTTSUBACK      9 << 4  }\textcolor{comment}{// Subscribe Acknowledgment}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define MQTTUNSUBSCRIBE 10 << 4 }\textcolor{comment}{// Client Unsubscribe request}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define MQTTUNSUBACK    11 << 4 }\textcolor{comment}{// Unsubscribe Acknowledgment}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define MQTTPINGREQ     12 << 4 }\textcolor{comment}{// PING Request}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define MQTTPINGRESP    13 << 4 }\textcolor{comment}{// PING Response}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define MQTTDISCONNECT  14 << 4 }\textcolor{comment}{// Client is Disconnecting}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#define MQTTReserved    15 << 4 }\textcolor{comment}{// Reserved}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define MQTTQOS0        (0 << 1)}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define MQTTQOS1        (1 << 1)}}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define MQTTQOS2        (2 << 1)}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 \textcolor{comment}{// Maximum size of fixed header and variable length size header}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define MQTT\_MAX\_HEADER\_SIZE 5}}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#if defined(ESP8266) || defined(ESP32)}}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define MQTT\_CALLBACK\_SIGNATURE std::function<void(char*, uint8\_t*, unsigned int)> callback}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define MQTT\_CALLBACK\_SIGNATURE void (*callback)(char*, uint8\_t*, unsigned int)}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define CHECK\_STRING\_LENGTH(l,s) if (l+2+strlen(s) > MQTT\_MAX\_PACKET\_SIZE) \{\_client-\/>stop();return false;\}}}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88 \textcolor{keyword}{class }\mbox{\hyperlink{class_pub_sub_client}{PubSubClient}} : \textcolor{keyword}{public} Print \{}
+\DoxyCodeLine{89 \textcolor{keyword}{private}:}
+\DoxyCodeLine{90    Client* \_client;}
+\DoxyCodeLine{91    uint8\_t buffer[\mbox{\hyperlink{_pub_sub_client_8h_ae09b594688a59f1427c7e45259e039b9}{MQTT\_MAX\_PACKET\_SIZE}}];}
+\DoxyCodeLine{92    uint16\_t nextMsgId;}
+\DoxyCodeLine{93    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} lastOutActivity;}
+\DoxyCodeLine{94    \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} lastInActivity;}
+\DoxyCodeLine{95    \textcolor{keywordtype}{bool} pingOutstanding;}
+\DoxyCodeLine{96    MQTT\_CALLBACK\_SIGNATURE;}
+\DoxyCodeLine{97    uint16\_t readPacket(uint8\_t*);}
+\DoxyCodeLine{98    \textcolor{keywordtype}{boolean} readByte(uint8\_t * result);}
+\DoxyCodeLine{99    \textcolor{keywordtype}{boolean} readByte(uint8\_t * result, uint16\_t * index);}
+\DoxyCodeLine{100    \textcolor{keywordtype}{boolean} write(uint8\_t header, uint8\_t* buf, uint16\_t length);}
+\DoxyCodeLine{101    uint16\_t writeString(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{string}, uint8\_t* buf, uint16\_t pos);}
+\DoxyCodeLine{102    \textcolor{comment}{// Build up the header ready to send}}
+\DoxyCodeLine{103    \textcolor{comment}{// Returns the size of the header}}
+\DoxyCodeLine{104    \textcolor{comment}{// Note: the header is built at the end of the first MQTT\_MAX\_HEADER\_SIZE bytes, so will start}}
+\DoxyCodeLine{105    \textcolor{comment}{//       (MQTT\_MAX\_HEADER\_SIZE -\/ <returned size>) bytes into the buffer}}
+\DoxyCodeLine{106    \textcolor{keywordtype}{size\_t} buildHeader(uint8\_t header, uint8\_t* buf, uint16\_t length);}
+\DoxyCodeLine{107    IPAddress ip;}
+\DoxyCodeLine{108    \textcolor{keyword}{const} \textcolor{keywordtype}{char}* domain;}
+\DoxyCodeLine{109    uint16\_t port;}
+\DoxyCodeLine{110    Stream* stream;}
+\DoxyCodeLine{111    \textcolor{keywordtype}{int} \_state;}
+\DoxyCodeLine{112 \textcolor{keyword}{public}:}
+\DoxyCodeLine{113    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}();}
+\DoxyCodeLine{114    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{115    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(IPAddress, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{116    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(IPAddress, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{117    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(IPAddress, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{118    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(IPAddress, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{119    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(uint8\_t *, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{120    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(uint8\_t *, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{121    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(uint8\_t *, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{122    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(uint8\_t *, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{123    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{124    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*, uint16\_t, Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{125    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{126    \mbox{\hyperlink{class_pub_sub_client_a63abf28fee11df02d353b83cd08c255e}{PubSubClient}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}*, uint16\_t, MQTT\_CALLBACK\_SIGNATURE,Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}}, Stream\&);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_a1acafb3015e083911b7ca205b79a3829}{setServer}}(IPAddress ip, uint16\_t port);}
+\DoxyCodeLine{129    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_a1acafb3015e083911b7ca205b79a3829}{setServer}}(uint8\_t * ip, uint16\_t port);}
+\DoxyCodeLine{130    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_a1acafb3015e083911b7ca205b79a3829}{setServer}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} * domain, uint16\_t port);}
+\DoxyCodeLine{131    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_a115733ca6dd337362375d3c4a45300fe}{setCallback}}(MQTT\_CALLBACK\_SIGNATURE);}
+\DoxyCodeLine{132    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_ab661f30558142d81e88bf1ea83eb2ed7}{setClient}}(Client\& \mbox{\hyperlink{_publisher_8cpp_a58a8115b8f4610b67d7d5c743464f075}{client}});}
+\DoxyCodeLine{133    \mbox{\hyperlink{class_pub_sub_client}{PubSubClient}}\& \mbox{\hyperlink{class_pub_sub_client_af3983031103b719a0997424a3e44fcef}{setStream}}(Stream\& stream);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a93fe764801b6bef4bfc30b0f89c7cb33}{connect}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{id});}
+\DoxyCodeLine{136    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a93fe764801b6bef4bfc30b0f89c7cb33}{connect}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{id}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* user, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* pass);}
+\DoxyCodeLine{137    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a93fe764801b6bef4bfc30b0f89c7cb33}{connect}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{id}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willTopic, uint8\_t willQos, \textcolor{keywordtype}{boolean} willRetain, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willMessage);}
+\DoxyCodeLine{138    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a93fe764801b6bef4bfc30b0f89c7cb33}{connect}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{id}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* user, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* pass, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willTopic, uint8\_t willQos, \textcolor{keywordtype}{boolean} willRetain, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willMessage);}
+\DoxyCodeLine{139    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a93fe764801b6bef4bfc30b0f89c7cb33}{connect}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* \textcolor{keywordtype}{id}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* user, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* pass, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willTopic, uint8\_t willQos, \textcolor{keywordtype}{boolean} willRetain, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* willMessage, \textcolor{keywordtype}{boolean} cleanSession);}
+\DoxyCodeLine{140    \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pub_sub_client_ac0d1c6de8a88a9f9fda04126c8cf2fe0}{disconnect}}();}
+\DoxyCodeLine{141    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7a0c199996988e26ad7a815e74dec305}{publish}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* payload);}
+\DoxyCodeLine{142    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7a0c199996988e26ad7a815e74dec305}{publish}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* payload, \textcolor{keywordtype}{boolean} retained);}
+\DoxyCodeLine{143    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7a0c199996988e26ad7a815e74dec305}{publish}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} uint8\_t * payload, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} plength);}
+\DoxyCodeLine{144    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7a0c199996988e26ad7a815e74dec305}{publish}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} uint8\_t * payload, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} plength, \textcolor{keywordtype}{boolean} retained);}
+\DoxyCodeLine{145    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a624b183f8f13a78e6d5a234a3d974e25}{publish\_P}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* payload, \textcolor{keywordtype}{boolean} retained);}
+\DoxyCodeLine{146    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a624b183f8f13a78e6d5a234a3d974e25}{publish\_P}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keyword}{const} uint8\_t * payload, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} plength, \textcolor{keywordtype}{boolean} retained);}
+\DoxyCodeLine{147    \textcolor{comment}{// Start to publish a message.}}
+\DoxyCodeLine{148    \textcolor{comment}{// This API:}}
+\DoxyCodeLine{149    \textcolor{comment}{//   beginPublish(...)}}
+\DoxyCodeLine{150    \textcolor{comment}{//   one or more calls to write(...)}}
+\DoxyCodeLine{151    \textcolor{comment}{//   endPublish()}}
+\DoxyCodeLine{152    \textcolor{comment}{// Allows for arbitrarily large payloads to be sent without them having to be copied into}}
+\DoxyCodeLine{153    \textcolor{comment}{// a new buffer and held in memory at one time}}
+\DoxyCodeLine{154    \textcolor{comment}{// Returns 1 if the message was started successfully, 0 if there was an error}}
+\DoxyCodeLine{155    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a209ccf88b160d9468b03bffc67d533ed}{beginPublish}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} plength, \textcolor{keywordtype}{boolean} retained);}
+\DoxyCodeLine{156    \textcolor{comment}{// Finish off this publish message (started with beginPublish)}}
+\DoxyCodeLine{157    \textcolor{comment}{// Returns 1 if the packet was sent successfully, 0 if there was an error}}
+\DoxyCodeLine{158    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_pub_sub_client_ac4449f164ed2ca67d0ac96fcebddb745}{endPublish}}();}
+\DoxyCodeLine{159    \textcolor{comment}{// Write a single byte of payload (only to be used with beginPublish/endPublish)}}
+\DoxyCodeLine{160    \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} write(uint8\_t);}
+\DoxyCodeLine{161    \textcolor{comment}{// Write size bytes from buffer into the payload (only to be used with beginPublish/endPublish)}}
+\DoxyCodeLine{162    \textcolor{comment}{// Returns the number of bytes written}}
+\DoxyCodeLine{163    \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} write(\textcolor{keyword}{const} uint8\_t *buffer, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{164    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a53ac4643da7d556b35f03fdff2aafbfd}{subscribe}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic);}
+\DoxyCodeLine{165    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a53ac4643da7d556b35f03fdff2aafbfd}{subscribe}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, uint8\_t qos);}
+\DoxyCodeLine{166    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7bd8c84135c1de194a346e37102d8324}{unsubscribe}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic);}
+\DoxyCodeLine{167    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a42f2da05718309f490db2a18b710a5ae}{loop}}();}
+\DoxyCodeLine{168    \textcolor{keywordtype}{boolean} \mbox{\hyperlink{class_pub_sub_client_a7a448bc584b7b84d2592a132c5123ac8}{connected}}();}
+\DoxyCodeLine{169    \textcolor{keywordtype}{int} \mbox{\hyperlink{class_pub_sub_client_a8a7025562e55ee15fd4469b75d535b1d}{state}}();}
+\DoxyCodeLine{170 \};}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

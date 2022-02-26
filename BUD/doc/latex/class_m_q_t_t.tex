@@ -1,0 +1,89 @@
+\hypertarget{class_m_q_t_t}{}\doxysection{Référence de la classe MQTT}
+\label{class_m_q_t_t}\index{MQTT@{MQTT}}
+
+
+{\ttfamily \#include $<$MQTT.\+h$>$}
+
+\doxysubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}{MQTT}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}{MQTT\+::\+MQTT}} object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_m_q_t_t_adbdce236a43cd417fa1127713026dd73}{Connect}} (\mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} $\ast$MQTTclient, const char $\ast$mqtt\+\_\+client\+ID, const char $\ast$\mbox{\hyperlink{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}{mqtt\+\_\+username}}, const char $\ast$\mbox{\hyperlink{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}{mqtt\+\_\+password}})
+\begin{DoxyCompactList}\small\item\em Connect to \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server using the user selected. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_m_q_t_t_ad7e9e770d0b2c800d15bc7ec00e29608}{publish\+Topic}} (\mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} MQTTclient, const char $\ast$topic, float variable, const char $\ast$mqtt\+\_\+client\+ID, const char $\ast$\mbox{\hyperlink{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}{mqtt\+\_\+username}}, const char $\ast$\mbox{\hyperlink{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}{mqtt\+\_\+password}})
+\begin{DoxyCompactList}\small\item\em Send the informations of the publisher on the selected topic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des constructeurs et destructeur}
+\mbox{\Hypertarget{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}\label{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}} 
+\index{MQTT@{MQTT}!MQTT@{MQTT}}
+\index{MQTT@{MQTT}!MQTT@{MQTT}}
+\doxysubsubsection{\texorpdfstring{MQTT()}{MQTT()}}
+{\footnotesize\ttfamily MQTT\+::\+MQTT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}{MQTT\+::\+MQTT}} object. 
+
+
+
+\doxysubsection{Documentation des fonctions membres}
+\mbox{\Hypertarget{class_m_q_t_t_adbdce236a43cd417fa1127713026dd73}\label{class_m_q_t_t_adbdce236a43cd417fa1127713026dd73}} 
+\index{MQTT@{MQTT}!Connect@{Connect}}
+\index{Connect@{Connect}!MQTT@{MQTT}}
+\doxysubsubsection{\texorpdfstring{Connect()}{Connect()}}
+{\footnotesize\ttfamily int MQTT\+::\+Connect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} $\ast$}]{MQTTclient,  }\item[{const char $\ast$}]{mqtt\+\_\+client\+ID,  }\item[{const char $\ast$}]{mqtt\+\_\+username,  }\item[{const char $\ast$}]{mqtt\+\_\+password }\end{DoxyParamCaption})}
+
+
+
+Connect to \mbox{\hyperlink{class_m_q_t_t}{MQTT}} Server using the user selected. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em MQTTclient} & \\
+\hline
+{\em mqtt\+\_\+client\+ID} & \\
+\hline
+{\em mqtt\+\_\+username} & \\
+\hline
+{\em mqtt\+\_\+password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_m_q_t_t_ad7e9e770d0b2c800d15bc7ec00e29608}\label{class_m_q_t_t_ad7e9e770d0b2c800d15bc7ec00e29608}} 
+\index{MQTT@{MQTT}!publishTopic@{publishTopic}}
+\index{publishTopic@{publishTopic}!MQTT@{MQTT}}
+\doxysubsubsection{\texorpdfstring{publishTopic()}{publishTopic()}}
+{\footnotesize\ttfamily int MQTT\+::publish\+Topic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}}}]{MQTTclient,  }\item[{const char $\ast$}]{topic,  }\item[{float}]{variable,  }\item[{const char $\ast$}]{mqtt\+\_\+client\+ID,  }\item[{const char $\ast$}]{mqtt\+\_\+username,  }\item[{const char $\ast$}]{mqtt\+\_\+password }\end{DoxyParamCaption})}
+
+
+
+Send the informations of the publisher on the selected topic. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em MQTTclient} & \\
+\hline
+{\em topic} & \\
+\hline
+{\em variable} & \\
+\hline
+{\em mqtt\+\_\+client\+ID} & \\
+\hline
+{\em mqtt\+\_\+username} & \\
+\hline
+{\em mqtt\+\_\+password} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int 
+\end{DoxyReturn}
+
+
+La documentation de cette classe a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_m_q_t_t_8h}{MQTT.\+h}}\item 
+src/\mbox{\hyperlink{_m_q_t_t_8cpp}{MQTT.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IIOT BIAIS PERIER:  Fichier source de include/WS.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IIOT BIAIS PERIER
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_w_s_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">WS.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_w_s_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef WS_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define WS_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">    #include &lt;ESP8266Wifi.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #include &lt;ESP8266WebServer.h&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="_w_s_8h.html#aea2fc3977d800aac9367b83b52460952">handleRoot</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="_w_s_8h.html#aa31a639a4bdf7aedbf2ebb11568b966b">handleGetTemp</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    String <a class="code hl_function" href="_w_s_8h.html#a8015b2ebd0b4bccc3991215188340d1e">getPage</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    String <a class="code hl_function" href="_w_s_8h.html#ab18376db561481842bfa8f539709b437">getPageTemp</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_w_s.html">   15</a></span>    <span class="keyword">class </span><a class="code hl_class" href="class_w_s.html">WS</a>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            <a class="code hl_function" href="class_w_s.html#af03616c70eb18a8c082fe7b1bd9a826a">WS</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordtype">int</span> <a class="code hl_function" href="class_w_s.html#a7bbff6529d0612eb5e41c9fca662acaf">InitWifiWsMode</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="class_w_s.html#ac5857c47530f601fc1f392724c10c45c">getServer</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    };</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif </span><span class="comment">/* WS_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_w_s_8h_html_a8015b2ebd0b4bccc3991215188340d1e"><div class="ttname"><a href="_w_s_8h.html#a8015b2ebd0b4bccc3991215188340d1e">getPage</a></div><div class="ttdeci">String getPage(void)</div><div class="ttdoc">Get the Page object.</div><div class="ttdef"><b>Definition:</b> WS.cpp:118</div></div>
+<div class="ttc" id="a_w_s_8h_html_aa31a639a4bdf7aedbf2ebb11568b966b"><div class="ttname"><a href="_w_s_8h.html#aa31a639a4bdf7aedbf2ebb11568b966b">handleGetTemp</a></div><div class="ttdeci">void handleGetTemp(void)</div><div class="ttdoc">Handle the generation of the temperature display page.</div><div class="ttdef"><b>Definition:</b> WS.cpp:109</div></div>
+<div class="ttc" id="a_w_s_8h_html_ab18376db561481842bfa8f539709b437"><div class="ttname"><a href="_w_s_8h.html#ab18376db561481842bfa8f539709b437">getPageTemp</a></div><div class="ttdeci">String getPageTemp(void)</div><div class="ttdoc">Get the Page Temp object.</div><div class="ttdef"><b>Definition:</b> WS.cpp:159</div></div>
+<div class="ttc" id="a_w_s_8h_html_aea2fc3977d800aac9367b83b52460952"><div class="ttname"><a href="_w_s_8h.html#aea2fc3977d800aac9367b83b52460952">handleRoot</a></div><div class="ttdeci">void handleRoot(void)</div><div class="ttdoc">Handle the generation of the root page.</div><div class="ttdef"><b>Definition:</b> WS.cpp:101</div></div>
+<div class="ttc" id="aclass_w_s_html"><div class="ttname"><a href="class_w_s.html">WS</a></div><div class="ttdef"><b>Definition:</b> WS.h:15</div></div>
+<div class="ttc" id="aclass_w_s_html_a7bbff6529d0612eb5e41c9fca662acaf"><div class="ttname"><a href="class_w_s.html#a7bbff6529d0612eb5e41c9fca662acaf">WS::InitWifiWsMode</a></div><div class="ttdeci">int InitWifiWsMode(void)</div><div class="ttdoc">Init the Wifi Access Point and Station.</div><div class="ttdef"><b>Definition:</b> WS.cpp:49</div></div>
+<div class="ttc" id="aclass_w_s_html_ac5857c47530f601fc1f392724c10c45c"><div class="ttname"><a href="class_w_s.html#ac5857c47530f601fc1f392724c10c45c">WS::getServer</a></div><div class="ttdeci">void getServer(void)</div><div class="ttdoc">Get the Server object.</div><div class="ttdef"><b>Definition:</b> WS.cpp:224</div></div>
+<div class="ttc" id="aclass_w_s_html_af03616c70eb18a8c082fe7b1bd9a826a"><div class="ttname"><a href="class_w_s.html#af03616c70eb18a8c082fe7b1bd9a826a">WS::WS</a></div><div class="ttdeci">WS(void)</div><div class="ttdoc">Construct a new WS::WS object.</div><div class="ttdef"><b>Definition:</b> WS.cpp:41</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="_w_s_8h.html">WS.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

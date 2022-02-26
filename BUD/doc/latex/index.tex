@@ -1,0 +1,65 @@
+\label{index_md_ReadMe}%
+\Hypertarget{index_md_ReadMe}%
+ \hypertarget{index_autotoc_md1}{}\doxysection{Introduction}\label{index_autotoc_md1}
+Nous souhaitons présenter dans cette documentation les différents fichiers que nous avons créer ainsi que les fonctions qui les composent pour offrir la meilleure compréhension pour l\textquotesingle{}utilisateur.
+
+Vous pouvez vous déplacer à travers l\textquotesingle{}arbre de navigation sur la gauche pour étudier les différents fichiers contenu dans notre code.
+
+On peut diviser cela en 2 dossier distincts \+:
+\begin{DoxyItemize}
+\item Publisher \+: BIAIS Budwael
+\item Subscriber \+: PERIER Marc
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md3}{}\doxysection{Publisher}\label{index_autotoc_md3}
+Dans notre cas le publisher avait pour rôle de mesurer la température et l\textquotesingle{}humidité à l\textquotesingle{}aide d\textquotesingle{}un module SHT30 pour l\textquotesingle{}afficher et l\textquotesingle{}envoyer au Subscriber
+
+Le dossier publisher est composé des dossiers suivants \+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} \+: L\textquotesingle{}extension pour les fonctions liés au serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}} fourni
+\item Wire \+: L\textquotesingle{}extension Arduino pour la communication I2C avec le shield
+\item WEMOS\+\_\+\+SHT3X \+: L\textquotesingle{}extension pour le contrôle du shield de Température/\+Humidité
+\item AP \+: Le fichier de contrôle de l\textquotesingle{}access Point pour récupérer les données de Température/\+Humidité
+\item \mbox{\hyperlink{class_w_s}{WS}} \+: Le fichier de gestion d\textquotesingle{}ensemble WIFI pour l\textquotesingle{}initialisation du serveur t l\textquotesingle{}affichage des pages WEB
+\item \mbox{\hyperlink{class_m_q_t_t}{MQTT}} \+: Le fichier pour l\textquotesingle{}initialisation et la commuication sur le serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}}
+\item Publisher \+: Le fichier main de flash de la carte ESP8266
+\end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysubsection{Connexion au Wifi Station et Access Point avec affichage sur le port Serial}\label{index_autotoc_md4}
+
+
+On peut voir sur l\textquotesingle{}image que la ESP8266 s\textquotesingle{}est bien connectée sur la Wifi Station via l\textquotesingle{}IP du routeur sur la wifi \char`\"{}robotique\char`\"{}. On peut aussi constater que la carte a configuré comme il faut les paramètres Access Point qui par ailleurs est bien visible dans la recherche de connexion Wifi \+:
+
+ 
+
+Tout ceci est afficher via la connexion au port Serial COM et de plus on remarque la connexion au serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}} en tant que USER9.\hypertarget{index_autotoc_md5}{}\doxysubsection{Communication sur le serveur MQTT}\label{index_autotoc_md5}
+
+
+On peut voir l\textquotesingle{}affichage sur le port Serial les valeurs de température et d\textquotesingle{}humidité (arrondis à 2 décimales) qui sont envoyés par intervalle de 2 secondes sur les 2 topics de paramètre \+: Temp et Humi
+
+Ils seront ensuite récupérés par le Subscriber pour l\textquotesingle{}ouverture/fermeture du relais.\hypertarget{index_autotoc_md6}{}\doxysubsection{Affichage sur le serveur Web}\label{index_autotoc_md6}
+
+
+Notre code affiche bien sur l\textquotesingle{}adresse IP la page Web qui nous indique les IP de notre configuration \mbox{\hyperlink{class_w_s}{WS}} et AP. Il nous donne aussi la possibilité de regarder les paramètres envoyés par le capteur de Température et d\textquotesingle{}Humidité \+:
+
+
+
+La page web nous affiche les différents paramètres avec l\textquotesingle{}unité et la page Web sera rechargée toutes les 2 secondes (correspondant aussi au rechargement pour l\textquotesingle{}envoie des paramètres sur le serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}}) afin de toujours avoir des valeurs actuelles.
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md8}{}\doxysection{Subscriber}\label{index_autotoc_md8}
+Dans notre cas le subscriber avait pour rôle de récupérer les mesures de température et dh\textquotesingle{}umidité sur le serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}} et d\textquotesingle{}ouvrir ou fermer le relais en conséquence suivant les données récoltées
+
+Le dossier subscriber est composé des dossiers suivants \+:
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_pub_sub_client}{Pub\+Sub\+Client}} \+: L\textquotesingle{}extension pour les fonctions liés au serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}} fourni
+\item Wire \+: L\textquotesingle{}extension Arduino pour la communication I2C avec le shield
+\item WEMOS\+\_\+\+SHT3X \+: L\textquotesingle{}extension pour le contrôle du shield de Température/\+Humidité
+\item AP \+: Le fichier de contrôle de l\textquotesingle{}access Point pour récupérer les données de Température/\+Humidité
+\item \mbox{\hyperlink{class_w_s}{WS}} \+: Le fichier de gestion d\textquotesingle{}ensemble WIFI pour l\textquotesingle{}initialisation du serveur t l\textquotesingle{}affichage des pages WEB
+\item \mbox{\hyperlink{class_m_q_t_t}{MQTT}} \+: Le fichier pour l\textquotesingle{}initialisation et la commuication sur le serveur \mbox{\hyperlink{class_m_q_t_t}{MQTT}}
+\item Subscriber \+: Le fichier main de flash de la carte ESP8266
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md10}{}\doxysection{Contact}\label{index_autotoc_md10}
+Pour toute remarque supplémentaire ou questions à propos du code (ou pour nous engager à la NASA), veuillez nous contacter par mail à l\textquotesingle{}adresse \href{mailto:b.biais@net.estia.fr}{\texttt{ b.\+biais@net.\+estia.\+fr}} ou \href{mailto:m.perier@net.estia.fr}{\texttt{ m.\+perier@net.\+estia.\+fr}} 

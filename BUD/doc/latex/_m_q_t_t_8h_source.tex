@@ -1,0 +1,28 @@
+\hypertarget{_m_q_t_t_8h_source}{}\doxysection{MQTT.\+h}
+\label{_m_q_t_t_8h_source}\index{include/MQTT.h@{include/MQTT.h}}
+\mbox{\hyperlink{_m_q_t_t_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef MQTT\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define MQTT\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{    \#include <Arduino.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{    \#include <\mbox{\hyperlink{_pub_sub_client_8h}{PubSubClient.h}}>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7     \textcolor{keywordtype}{void} \mbox{\hyperlink{_m_q_t_t_8h_ac1ce937b05610a136ca3533e5a6334a5}{MQTT\_ReceiveMessageEvent}}(\textcolor{keywordtype}{char}* topic, \textcolor{keywordtype}{byte}* payload, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} length);}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     \textcolor{keyword}{class }\mbox{\hyperlink{class_m_q_t_t}{MQTT}}\{}
+\DoxyCodeLine{11 \textcolor{keyword}{public}:}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_m_q_t_t_a75b5fb0489a6ecc75d75ed2362e60aef}{MQTT}}();}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_m_q_t_t_adbdce236a43cd417fa1127713026dd73}{Connect}}(\mbox{\hyperlink{class_pub_sub_client}{PubSubClient}} *MQTTclient, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* mqtt\_clientID, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}{mqtt\_username}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}{mqtt\_password}}) ;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_m_q_t_t_ad7e9e770d0b2c800d15bc7ec00e29608}{publishTopic}}(\mbox{\hyperlink{class_pub_sub_client}{PubSubClient}} MQTTclient, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* topic, \textcolor{keywordtype}{float} variable, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* mqtt\_clientID, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{_publisher_8cpp_ad2e970e18b7340a9f06c6ce127ebb00c}{mqtt\_username}}, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* \mbox{\hyperlink{_publisher_8cpp_a05a0a696a5a0ee876c76d14b9b664f0a}{mqtt\_password}});}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{keyword}{private}:}
+\DoxyCodeLine{17     uint8\_t \_address;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \};}
+\DoxyCodeLine{20     }
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

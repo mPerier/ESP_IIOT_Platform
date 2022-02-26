@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IIOT BIAIS PERIER: Rapport IIOT : BIAIS Budwael PERIER Marc</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">IIOT BIAIS PERIER
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div><div class="header">
+  <div class="headertitle"><div class="title">Rapport IIOT : BIAIS Budwael PERIER Marc </div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_ReadMe"></a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introduction</h1>
+<p >Nous souhaitons présenter dans cette documentation les différents fichiers que nous avons créer ainsi que les fonctions qui les composent pour offrir la meilleure compréhension pour l'utilisateur.</p>
+<p >Vous pouvez vous déplacer à travers l'arbre de navigation sur la gauche pour étudier les différents fichiers contenu dans notre code.</p>
+<p >On peut diviser cela en 2 dossier distincts :</p><ul>
+<li>Publisher : BIAIS Budwael</li>
+<li>Subscriber : PERIER Marc</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md3"></a>
+Publisher</h1>
+<p >Dans notre cas le publisher avait pour rôle de mesurer la température et l'humidité à l'aide d'un module SHT30 pour l'afficher et l'envoyer au Subscriber</p>
+<p >Le dossier publisher est composé des dossiers suivants :</p><ul>
+<li><a class="el" href="class_pub_sub_client.html">PubSubClient</a> : L'extension pour les fonctions liés au serveur <a class="el" href="class_m_q_t_t.html">MQTT</a> fourni</li>
+<li>Wire : L'extension Arduino pour la communication I2C avec le shield</li>
+<li>WEMOS_SHT3X : L'extension pour le contrôle du shield de Température/Humidité</li>
+<li>AP : Le fichier de contrôle de l'access Point pour récupérer les données de Température/Humidité</li>
+<li><a class="el" href="class_w_s.html">WS</a> : Le fichier de gestion d'ensemble WIFI pour l'initialisation du serveur t l'affichage des pages WEB</li>
+<li><a class="el" href="class_m_q_t_t.html">MQTT</a> : Le fichier pour l'initialisation et la commuication sur le serveur <a class="el" href="class_m_q_t_t.html">MQTT</a></li>
+<li>Publisher : Le fichier main de flash de la carte ESP8266</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Connexion au Wifi Station et Access Point avec affichage sur le port Serial</h2>
+<p ><img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/WS_AP.png" alt="Connexion WS et AP" class="inline"/></p>
+<p >On peut voir sur l'image que la ESP8266 s'est bien connectée sur la Wifi Station via l'IP du routeur sur la wifi "robotique". On peut aussi constater que la carte a configuré comme il faut les paramètres Access Point qui par ailleurs est bien visible dans la recherche de connexion Wifi :</p>
+<p ><img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/IIOT_Temp_Buddy.png" alt="IIOT Buddy" class="inline"/> <img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/AP_config.png" alt="IIOT config" class="inline"/></p>
+<p >Tout ceci est afficher via la connexion au port Serial COM et de plus on remarque la connexion au serveur <a class="el" href="class_m_q_t_t.html">MQTT</a> en tant que USER9.</p>
+<h2><a class="anchor" id="autotoc_md5"></a>
+Communication sur le serveur MQTT</h2>
+<p ><img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/SerialSensor.png" alt="MQTT" class="inline"/></p>
+<p >On peut voir l'affichage sur le port Serial les valeurs de température et d'humidité (arrondis à 2 décimales) qui sont envoyés par intervalle de 2 secondes sur les 2 topics de paramètre : Temp et Humi</p>
+<p >Ils seront ensuite récupérés par le Subscriber pour l'ouverture/fermeture du relais.</p>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Affichage sur le serveur Web</h2>
+<p ><img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/Website.png" alt="" width="1000" height="600" class="inline"/></p>
+<p >Notre code affiche bien sur l'adresse IP la page Web qui nous indique les IP de notre configuration <a class="el" href="class_w_s.html">WS</a> et AP. Il nous donne aussi la possibilité de regarder les paramètres envoyés par le capteur de Température et d'Humidité :</p>
+<p ><img src="file:///C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/WebsiteSensor.png" alt="" width="1000" height="600" class="inline"/></p>
+<p >La page web nous affiche les différents paramètres avec l'unité et la page Web sera rechargée toutes les 2 secondes (correspondant aussi au rechargement pour l'envoie des paramètres sur le serveur <a class="el" href="class_m_q_t_t.html">MQTT</a>) afin de toujours avoir des valeurs actuelles.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md8"></a>
+Subscriber</h1>
+<p >Dans notre cas le subscriber avait pour rôle de récupérer les mesures de température et dh'umidité sur le serveur <a class="el" href="class_m_q_t_t.html">MQTT</a> et d'ouvrir ou fermer le relais en conséquence suivant les données récoltées</p>
+<p >Le dossier subscriber est composé des dossiers suivants :</p><ul>
+<li><a class="el" href="class_pub_sub_client.html">PubSubClient</a> : L'extension pour les fonctions liés au serveur <a class="el" href="class_m_q_t_t.html">MQTT</a> fourni</li>
+<li>Wire : L'extension Arduino pour la communication I2C avec le shield</li>
+<li>WEMOS_SHT3X : L'extension pour le contrôle du shield de Température/Humidité</li>
+<li>AP : Le fichier de contrôle de l'access Point pour récupérer les données de Température/Humidité</li>
+<li><a class="el" href="class_w_s.html">WS</a> : Le fichier de gestion d'ensemble WIFI pour l'initialisation du serveur t l'affichage des pages WEB</li>
+<li><a class="el" href="class_m_q_t_t.html">MQTT</a> : Le fichier pour l'initialisation et la commuication sur le serveur <a class="el" href="class_m_q_t_t.html">MQTT</a></li>
+<li>Subscriber : Le fichier main de flash de la carte ESP8266</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md10"></a>
+Contact</h1>
+<p >Pour toute remarque supplémentaire ou questions à propos du code (ou pour nous engager à la NASA), veuillez nous contacter par mail à l'adresse <a href="#" onclick="location.href='mai'+'lto:'+'b.b'+'ia'+'is@'+'ne'+'t.e'+'st'+'ia.'+'fr'; return false;">b.bia<span style="display: none;">.nosp@m.</span>is@n<span style="display: none;">.nosp@m.</span>et.es<span style="display: none;">.nosp@m.</span>tia.<span style="display: none;">.nosp@m.</span>fr</a> ou <a href="#" onclick="location.href='mai'+'lto:'+'m.p'+'er'+'ier'+'@n'+'et.'+'es'+'tia'+'.f'+'r'; return false;">m.per<span style="display: none;">.nosp@m.</span>ier@<span style="display: none;">.nosp@m.</span>net.e<span style="display: none;">.nosp@m.</span>stia<span style="display: none;">.nosp@m.</span>.fr</a> </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

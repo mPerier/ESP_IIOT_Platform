@@ -1,0 +1,35 @@
+\hypertarget{_w_e_m_o_s___s_h_t3_x_8h_source}{}\doxysection{WEMOS\+\_\+\+SHT3\+X.\+h}
+\label{_w_e_m_o_s___s_h_t3_x_8h_source}\index{include/WEMOS\_SHT3X.h@{include/WEMOS\_SHT3X.h}}
+\mbox{\hyperlink{_w_e_m_o_s___s_h_t3_x_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef \_\_WEMOS\_SHT3X\_H}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define \_\_WEMOS\_SHT3X\_H}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{ \#include "{}Arduino.h"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{ \#include "{}WProgram.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}Wire.h"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_s_h_t3_x}{SHT3X}}\{}
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{16     \mbox{\hyperlink{class_s_h_t3_x_a7cd43876a09c56ff368be501ea6f886e}{SHT3X}}(uint8\_t address=0x45);}
+\DoxyCodeLine{17     \textcolor{keywordtype}{byte} \mbox{\hyperlink{class_s_h_t3_x_a804466dc28cb2717a42299496eafb5af}{get}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_s_h_t3_x_ab81959d1037d09137c06d023ef633442}{cTemp}}=0;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_s_h_t3_x_a626acc36de0cf408b651871b8572a482}{fTemp}}=0;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_s_h_t3_x_a12b0d6249e8124b39e626b7b6834bd7e}{humidity}}=0;}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{keyword}{private}:}
+\DoxyCodeLine{23     uint8\_t \_address;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \};}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{29 }
+
+\end{DoxyCode}
