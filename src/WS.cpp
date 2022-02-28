@@ -1,0 +1,201 @@
+#include "WS.h"
+#include "GLOBALS.h"
+
+int InitWifiWsMode (int mode) {
+
+  String retreivedIP;
+  // BEWARE
+  // This function relies on the previous declaration of wifi parameters
+
+  char ssid[32];
+  char password[32];
+  double wifiStartupTime;
+
+  IPAddress local_IP;
+  IPAddress gateway;
+  IPAddress subnet;
+  IPAddress myIP;
+  
+  getEEPROMParam(e_ssid).toCharArray(ssid,32);
+  getEEPROMParam(e_password).toCharArray(password,32);
+
+  if (mode == 0){
+    local_IP.fromString(getEEPROMParam(e_IP_Local));
+  }
+  else {
+    local_IP.fromString(getEEPROMParam(e_IP_AP));
+  }
+
+  gateway.fromString(getEEPROMParam(e_IP_Gateway));
+  subnet.fromString(getEEPROMParam(e_IP_Subnet));
+
+  Serial.print("[WS] Connecting to ");
+  Serial.print(ssid);
+  Serial.print(" With local IP: ");
+  Serial.println(local_IP.toString());
+
+ // Start WIFI
+  if (mode == 0){
+    WiFi.mode(WIFI_STA);
+  }
+  else {
+    WiFi.mode(WIFI_AP_STA);
+  }
+  // Change the IP address 
+  WiFi.config(local_IP, gateway, subnet);
+  WiFi.begin(ssid, password);
+  // Wait while connecting
+
+  // Connect to wifi, give up if timeout is exceeded
+  wifiStartupTime = millis();
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+
+    if (millis() > wifiStartupTime+WIFI_CONNEXION_TIMEOUT_MS){
+      Serial.println("\n[WS] TimeOut on Wifi Initialisation, check the IP, ssid and password parameters via the Loading Server.\n");
+      return -1;
+    }
+
+  }
+  Serial.println("");
+  Serial.println("WiFi conected");
+
+  // Print the IP address
+  myIP = WiFi.localIP();
+  Serial.print("Local IP address: ");
+  Serial.println(myIP.toString());
+
+  return 1;
+}
+
+/**
+ * @brief Handle the generation of the root page
+ * 
+ */
+void handleRoot() {
+  server.send(200, "text/html", getPage());
+}
+
+/**
+ * @brief Handle the generation of the temperature display page
+ * 
+ */
+void handleGetTemp() {
+  server.send(200, "text/html", getPageTemp());
+}
+
+/**
+ * @brief Get the Page object
+ * 
+ * @return String 
+ */
+String getPage(){
+  // Confert IP to String
+  String WS_myIP_S = getEEPROMParam(e_IP_Local);
+  String AP_myIP_S = getEEPROMParam(e_IP_AP);
+  // HTML Page
+  String page = "<html lang=fr-FR><head><meta http-equiv='Content-Type'/>";
+  page += "<title>Temperature IoT</title>";
+  page += "<style> body { background-color: #fffff; font-family: Arial, Helvetica, Sans-Serif; Color: #000088; }";
+  page += ".btn { border: none; ";
+  page += "background-color: green; ";
+  page += "padding: 50px 150px; ";
+  page += "font-size: 40px; ";
+  page += "cursor: pointer; ";
+  page += "display: inline-block; } ";
+  page += ".success { color: white; } ";
+  page += "</style>";
+  page += "</head><body>";
+  page += "<div style=\"position:relative; top:0px; left:0px; width:100px; height:100px; opacity:0.3;\"><img src=\"C:/Users/b.biais/OneDrive%20-%20ESTIA/Documents/PlatformIO/Projects/IIOT%20Project%20BP/doc/img/Clement.jpg\" alt=\" \" /></div>";
+  page += "<p style='text-align: center'>&nbsp;</p> ";
+  page += "<p style='text-align: center'><font size=\"+6\">";
+  page += "Station IP" + WS_myIP_S;
+  page += "</font></p>";
+  page += "<p style='text-align: center'><font size=\"+6\">";
+  page += "Access Point IP" + AP_myIP_S;
+  page += "</font></p>";
+  page += "<p style='text-align: center'>&nbsp;</p>";
+  
+  page += "<p style='text-align: center'>&nbsp;</p>";
+  page += "<p style='text-align: center'>&nbsp;</p>";
+  page += "<p style='text-align: center'><a class='btn success' href='http://" + WS_myIP_S + "/gettemp' role='button'>Get Sensor Parameters WS</a></p>";
+  page += "<p style='text-align: center'>&nbsp;</p>";
+  page += "<p style='text-align: center'><a class='btn success' href='http://" + AP_myIP_S + "/gettemp' role='button'>Get Sensor Parameters AP</a></p>";
+  page += "</body></html>";
+  return page;
+}
+
+/**
+ * @brief Get the Page Temp object
+ * 
+ * @return String 
+ */
+String getPageTemp(){
+  // Confert IP to String
+  String WS_myIP_S = getEEPROMParam(e_IP_Local);
+  String AP_myIP_S = getEEPROMParam(e_IP_AP);
+  // HTML Page
+  String ptr = "<!DOCTYPE html> <html>\n";
+  ptr +="<head><meta http-equiv=\"refresh\" content=\"2\" ><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
+  ptr +="<link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,600\" rel=\"stylesheet\">\n";
+  ptr +="<title>ESP8266 Weather Report</title>\n";
+  ptr +="<style>html { font-family: 'Open Sans', sans-serif; display: block; margin: 0px auto; text-align: center;color: #333333;}\n";
+  ptr +="body{margin-top: 50px;}\n";
+  ptr +="h1 {margin: 50px auto 30px;}\n";
+  ptr +=".side-by-side{display: inline-block;vertical-align: middle;position: relative;}\n";
+  ptr +=".humidity-icon{background-color: #3498db;width: 30px;height: 30px;border-radius: 50%;line-height: 36px;}\n";
+  ptr +=".humidity-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
+  ptr +=".humidity{font-weight: 300;font-size: 60px;color: #3498db;}\n";
+  ptr +=".temperature-icon{background-color: #f39c12;width: 30px;height: 30px;border-radius: 50%;line-height: 40px;}\n";
+  ptr +=".temperature-text{font-weight: 600;padding-left: 15px;font-size: 19px;width: 160px;text-align: left;}\n";
+  ptr +=".temperature{font-weight: 300;font-size: 60px;color: #f39c12;}\n";
+  ptr +=".superscript{font-size: 17px;font-weight: 600;position: absolute;right: -20px;top: 15px;}\n";
+  ptr +=".data{padding: 10px;}\n";
+  ptr +="</style>\n";
+  ptr +="</head>\n";
+  ptr +="<body>\n";
+  ptr +="<div id=\"webpage\">\n";
+  
+  ptr +="<h1>BIAIS PERIER Capteur Temperature/Humidite</h1>\n";
+  ptr +="<div class=\"data\">\n";
+  ptr +="<div class=\"side-by-side temperature-icon\">\n";
+  ptr +="<svg version=\"1.1\" id=\"Layer_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n";
+  ptr +="width=\"9.915px\" height=\"22px\" viewBox=\"0 0 9.915 22\" enable-background=\"new 0 0 9.915 22\" xml:space=\"preserve\">\n";
+  ptr +="<path fill=\"#FFFFFF\" d=\"M3.498,0.53c0.377-0.331,0.877-0.501,1.374-0.527C5.697-0.04,6.522,0.421,6.924,1.142\n";
+  ptr +="c0.237,0.399,0.315,0.871,0.311,1.33C7.229,5.856,7.245,9.24,7.227,12.625c1.019,0.539,1.855,1.424,2.301,2.491\n";
+  ptr +="c0.491,1.163,0.518,2.514,0.062,3.693c-0.414,1.102-1.24,2.038-2.276,2.594c-1.056,0.583-2.331,0.743-3.501,0.463\n";
+  ptr +="c-1.417-0.323-2.659-1.314-3.3-2.617C0.014,18.26-0.115,17.104,0.1,16.022c0.296-1.443,1.274-2.717,2.58-3.394\n";
+  ptr +="c0.013-3.44,0-6.881,0.007-10.322C2.674,1.634,2.974,0.955,3.498,0.53z\"/>\n";
+  ptr +="</svg>\n";
+  ptr +="</div>\n";
+  ptr +="<div class=\"side-by-side temperature-text\">Temperature</div>\n";
+  ptr +="<div class=\"side-by-side temperature\">";
+  ptr +=getTemp();
+  ptr +="<span class=\"superscript\">C</span></div>\n";
+  ptr +="</div>\n";
+  ptr +="<div class=\"data\">\n";
+  ptr +="<div class=\"side-by-side humidity-icon\">\n";
+  ptr +="<svg version=\"1.1\" id=\"Layer_2\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\"; width=\"12px\" height=\"17.955px\" viewBox=\"0 0 13 17.955\" enable-background=\"new 0 0 13 17.955\" xml:space=\"preserve\">\n";
+  ptr +="<path fill=\"#FFFFFF\" d=\"M1.819,6.217C3.139,4.064,6.5,0,6.5,0s3.363,4.064,4.681,6.217c1.793,2.926,2.133,5.05,1.571,7.057\n";
+  ptr +="c-0.438,1.574-2.264,4.681-6.252,4.681c-3.988,0-5.813-3.107-6.252-4.681C-0.313,11.267,0.026,9.143,1.819,6.217\"></path>\n";
+  ptr +="</svg>\n";
+  ptr +="</div>\n";
+  ptr +="<div class=\"side-by-side humidity-text\">Humidity</div>\n";
+  ptr +="<div class=\"side-by-side humidity\">";
+  ptr +=getHumi();
+  ptr +="<span class=\"superscript\">%</span></div>\n";
+  ptr +="</div>\n";
+  ptr +="</div>\n";
+  ptr +="</body>\n";
+  ptr +="</html>\n";
+  return ptr;
+}
+
+/**
+ * @brief Get the Server object
+ * 
+ */
+void getServer (){
+  server.handleClient();
+}
